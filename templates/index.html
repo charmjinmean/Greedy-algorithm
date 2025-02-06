@@ -3,85 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>거스름돈 계산기</title>
+    <title>환전 홈페이지지</title>
     <style>
-      body {
+       
+        body {
+          background-color: #e0ffe0;  
+          text-align: center;         
+          font-weight: bold;          
           font-family: Arial, sans-serif;
-          text-align: center;
-          background-color: #f4f4f4;
-          margin: 50px;
-      }
-      h1 {
-          color: #333;
-      }
-      form {
-          background: white;
-          padding: 20px;
-          border-radius: 10px;
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-          display: inline-block;
-      }
-      input {
-          padding: 10px;
-          margin: 10px;
-          font-size: 16px;
-      }
-      button {
-          padding: 10px 20px;
-          font-size: 16px;
-          background-color: #28a745;
-          color: white;
-          border: none;
-          cursor: pointer;
-          border-radius: 5px;
-      }
-      button:hover {
-          background-color: #218838;
-      }
-      .error {
-          color: red;
-          font-weight: bold;
-          background: #ffe6e6;
-          padding: 10px;
-          border-radius: 5px;
-          display: inline-block;
-          margin-top: 10px;
-      }
-      .result {
-          background: white;
-          padding: 20px;
-          margin-top: 20px;
-          border-radius: 10px;
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-          display: inline-block;
-          text-align: left;
-      }
-      .result ul {
-          list-style-type: none;
+          margin: 0;
           padding: 0;
-      }
-      .result li {
-          font-size: 18px;
-          margin: 5px 0;
-      }
-  </style>
+        }
+       
+        h1 {
+          font-size: 32px;
+          margin-top: 30px;
+          margin-bottom: 20px;
+        }
+        
+        a {
+          text-decoration: none;
+          color: black;
+          font-size: 24px;
+        }
+        
+        img {
+          display: block;
+          margin: 0 auto 10px auto; 
+        }
+       
+        .dollar2-img {
+          width: 348px;
+          height: 258px;
+        }
+       
+        .won-img {
+          width: 348px;
+          height: 258px;
+        }
+       
+        p {
+          margin: 10px 0;
+        }
+      </style>
 </head>
 
 <body>
-    <h1>💰 거스름돈 계산기</h1>
-    
-    <form action="/" method="post">
-      <label for="total">지불한 금액:</label>
-      <input type="number" name="total" id="total" placeholder= "예: 10000">
-      <br><br>
-      <label for="price">상품 가격:</label>
-      <input type="number" name="price" id="price" placeholder="예: 7300" required>
-      <br><br>
-      <button type="submit">계산하기</button>
-    </form>
-
-    <p>
-    {{ render_html | default('') | safe}}
-    </p>
+    <h1>💰 환전하려는 화폐종류를 선택하세요 </h1>
+    <img src="{{ url_for('static', filename='images/dollar2.png') }}" alt="dollar">
+    <p></p>
+    <a href="/exchange_dollar">💲달러화 </a>
+    <p></p>
+    <img src="{{ url_for('static', filename='images/won.png') }}" alt="won">
+    <p></p>
+    <a href="/exchange_won"> 💸원화 </a>
 </body>
 </html>
