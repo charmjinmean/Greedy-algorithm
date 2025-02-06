@@ -31,11 +31,8 @@ def exchange_won():
  
     if request.method == 'POST':
         
-        total = request.form.get('total') 
-        price = request.form.get('price') 
-
-        total = int(total)
-        price = int(price)
+        total = int(request.form.get('total'))
+        price = int(request.form.get('price')) 
         amount = total - price
 
         won_dict = get_unit_count(amount, won_list)
@@ -51,7 +48,7 @@ def exchange_won():
 
 @app.route('/exchange_dollar', methods=['GET', 'POST'])
 def exchange_dollar():
-    print("달러 환전 요청청")
+    print("달러 환전 요청")
    
     dollar_list = [100, 50, 20, 10, 5, 2 ,1]
     
@@ -62,24 +59,20 @@ def exchange_dollar():
  
     if request.method == 'POST':
         
-        total = request.form.get('total') 
-        price = request.form.get('price') 
-
-        total = int(total)
-        price = int(price)
+        total = int(request.form.get('total')) 
+        price = int(request.form.get('price')) 
         amount = total - price
 
         dollar_dict = get_unit_count(amount, dollar_list)
 
-        for won,count in dollar_dict.items():
-            print(f"{won}달러: {count}개")
+        for dollar,count in dollar_dict.items():
+            print(f"{dollar}달러: {count}개")
 
             render_html = '<h1>결과보기</h1><br/>'
             for dollar,count in dollar_dict.items():
                  render_html += f"{dollar}달러: {count}개<br/>"
         
     return render_template("exchange_dollar.html", render_html = render_html)
-
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
