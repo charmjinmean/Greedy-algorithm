@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
-def get_unit_count(amount, won_list): #중첩 함수, #파라미터터
+def get_unit_count(amount, won_list):
 
     money = amount
     won_dict = {}
@@ -23,10 +23,7 @@ def index():
     total = None  
     price = None 
     amount = None 
-    error_msg = None 
-    mok = None
-    nmg = None 
-    money = None
+    render_html = ""
  
     if request.method == 'POST':
         
@@ -35,18 +32,18 @@ def index():
 
         total = int(total)
         price = int(price)
+        amount = total - price
 
-        if price > total :
-            error_msg = "음수는 허용되지 않습니다."
-        else :
-            amount = total - price
-            for won in won_list :
-                print(won)
+        won_dict = get_unit_count(amount, won_list)
 
-            get_unit_count(amount, won_list)
+        for won,count in won_dict.items():
+            print(f"{won}원: {count}개")
 
-    return render_template("index.html", won_list=won_list, money=money,
-                           total=total, price = price, amount=amount, error_msg=error_msg)   
+            render_html = '<h>결과보기</h1><br/>'
+            for won,count in won_dict.items():
+                 render_html += f"{won}원: {count}개<br/>"
+        
+    return render_template("index.html", render_html = render_html)   
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)

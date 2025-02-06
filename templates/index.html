@@ -80,25 +80,8 @@
       <button type="submit">계산하기</button>
     </form>
 
-    {% if error_msg %}
-    <p class="error">{{ error_msg }}</p>
-  {% endif %}
-
-    {% if amount is not none %}
-    <div class="result">
-    <h3> 💵 거스름돈: {{ amount }}원 </h3>
-    <ul> 
-      <li>🟢50000원: {{ mok }}개</li>
-      <li>🟢10000원: {{ mok }}개</li>
-      <li>🟡5000원: {{ mok }}개</li>
-      <li>🟡1000원: {{ mok }}개</li>
-      <li>🔵500원: {{ mok }}개</li>
-      <li>🔵100원: {{ mok }}개</li>
-      <li>🔴50원: {{ mok }}개</li>
-      <li>🔴5원: {{ mok }}개</li>
-    </ul>
-  </div>
-    {% endif %}
-
+    <p>
+    {{ render_html | default('') | safe}}
+    </p>
 </body>
 </html>
