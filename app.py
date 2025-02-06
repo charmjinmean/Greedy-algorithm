@@ -23,7 +23,8 @@ def index():
     amount = None 
     error_msg = None 
     mok = None
-    nmg = None
+    nmg = None 
+    money = None
 
     if request.method == 'POST':
         
@@ -42,15 +43,16 @@ def index():
                 print(won)
 
             amount = total - price 
- 
+            money = amount
+
             for won in won_list:
-                mok = amount // won
-                nmg = amount % won
+                mok = money // won
+                money = money % won
                 print(f"{won}원 : {mok}개")
 
             print("거스름돈", amount)
 
-    return render_template("index.html", won_list=won_list, mok = mok, nmg = nmg, 
+    return render_template("index.html", won_list=won_list, mok = mok, nmg = nmg, money=money,
                            total=total, price = price, amount=amount, error_msg=error_msg)   
 
 if __name__ == '__main__':
