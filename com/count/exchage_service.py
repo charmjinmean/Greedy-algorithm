@@ -13,11 +13,18 @@ class ExchangeService :
             currency_list = self.get_dollar_list()
             currency_unit = '달러'
             exchange.page = "exchange_dollar.html"
-    
         elif exchange.currency == 'WON':
             currency_list = self.get_won_list()
             currency_unit = '원'
             exchange.page = "exchange_won.html"
+        elif exchange.currency == "JPY":
+            currency_list = self.get_yen_list()
+            currency_unit = "엔"
+            exchange.page = "exchange_yen.html"
+        elif exchange.currency == "CNY":
+            currency_list = self.get_yuan_list()
+            currency_unit = "위안"
+            exchange.page = "exchange_yuan.html"
         else:
             raise ValueError("잘못된 화폐 단위입니다.")
 
@@ -59,7 +66,35 @@ class ExchangeService :
         dollar_list = [DOLLAR_100, DOLLAR_50, DOLLAR_20, 
                        DOLLAR_10, DOLLAR_5, DOLLAR_2, DOLLAR_1] 
         return dollar_list  
+    
+    def get_yen_list(self):
+        yen_10000 = 10000
+        yen_5000 = 5000
+        yen_2000 = 2000
+        yen_1000 = 1000
+        yen_500 = 500
+        yen_100 = 100
+        yen_50 = 50
+        yen_10 = 10
+        yen_5 = 5
+        yen_1 = 1
 
+        yen_list = [yen_10000, yen_5000, yen_2000, yen_1000,
+                       yen_500, yen_100, yen_50, yen_10, yen_5,yen_1 ] 
+        return yen_list  
+    
+    def get_yuan_list(self):
+        yuan_100 = 100
+        yuan_50 = 50
+        yuan_20 = 20
+        yuan_10 = 10
+        yuan_5 = 5
+        yuan_1 = 1
+
+        yuan_list = [yuan_100, yuan_50, yuan_20, 
+                       yuan_10, yuan_5, yuan_1] 
+        return yuan_list  
+    
     def format_currency_count(self, currency_dict, currency_unit):
         temp = ''
         for currency ,count in currency_dict.items():

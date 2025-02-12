@@ -16,6 +16,14 @@ def exchange_dollar():
 def exchange_won():
     return render_template("exchange_won.html")
 
+@app.route('/exchange_yen')
+def exchange_yen():
+    return render_template("exchange_yen.html")
+
+@app.route('/exchange_yuan')
+def exchange_yuan():
+    return render_template("exchange_yuan.html")
+
 @app.route('/exchange', methods=['GET', 'POST'])
 def exchange():
     print("달러 환전 요청")
