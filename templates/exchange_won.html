@@ -70,12 +70,12 @@
 <body>
     <h1>💰 원화 환전 </h1>
     
-    <form action="/exchange_won" method="post">
-      <label for="total">지불한 금액:</label>
-      <input type="number" name="total" id="total" placeholder= "예: 10000">
-      <br><br>
-      <label for="price">상품 가격:</label>
-      <input type="number" name="price" id="price" placeholder="예: 7300" required>
+    <form action="/exchange" method="post">
+      <label for="amount"> 금액 입력 - 원:</label>
+      <p></p>
+      <input type="text" id="currency" name="currency" min="0" value="WON" required>
+      <p></p>
+      <input type="number" name="amount" id="amount" min="0" required>>
       <br><br>
       <button type="submit">계산하기</button>
     </form>
