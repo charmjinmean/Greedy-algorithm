@@ -8,7 +8,7 @@ class ExchangeController:
         self.amount = int(kwargs.get("amount"))
         self.currency = kwargs.get("currency")
 
-    def getResult(self) -> ExchangeModel:
+    def get_result(self) -> ExchangeModel:
         exchange = ExchangeModel()
         exchange.amount=self.amount
         exchange.currency=self.currency

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배낭 문제</title>
+    <style>
+        body {
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;  
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+    }
+
+    .container {
+      max-width: 600px;     
+      margin: 40px auto;     
+      background: #fff;      
+      padding: 20px;         
+      border-radius: 6px;   
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;              
+    }
+    
+    .form-group {
+      display: flex;
+      flex-wrap: wrap;  
+      justify-content: center;    
+      align-items: center;
+      gap: 10px;
+    }
+
+    .form-group label {
+      min-width: 140px;
+      text-align: right;     
+      font-weight: bold;
+    }
+
+    
+    input[type="number"] {
+      width: 120px;        
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    
+    button[type="submit"] {
+      width: 120px;
+      padding: 10px;
+      margin: 0 auto;       
+      border: none;
+      border-radius: 4px;
+      background: #333;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background: #555;
+    }
+
+    
+    #result, .result-section {
+      margin-top: 20px;
+      text-align: center; 
+      line-height: 1.5;
+    }
+
+    
+    .home-link {
+      display: block;
+      text-align: center;
+      margin-top: 30px;
+      font-size: 14px;
+    }
+
+    .home-link a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    .home-link a:hover {
+      text-decoration: underline;
+    }
+      </style>
+</head>
+<body>
+    <h1>배낭 문제 입력</h1>
+    <form action="/knapsack" method="post">
+        <div class="form-group">
+            <h2><label for="capacity"> 배낭의 최대 용량: </label></h2>
+            <input type="number" id="capacity" name="capacity" required>
+        </div>
+        
+        <div id="itemInputs">
+            <h3>물체 정보 입력</h3>
+            <div class="item">
+                <h4><label>아이템1 이익 / 무게:</label></h4>
+                <input type="number" name="profit1" required>
+                <input type="number" name="weight1" required>
+            </div>
+            <div class="item">
+                <h4><label>아이템2 이익 / 무게:</label></h4>
+                <input type="number" name="profit2" required>
+                <input type="number" name="weight2" required>
+            </div>
+            <div class="item">
+                <h4><label>아이템3 이익 / 무게:</label></h4>
+                <input type="number" name="profit3" required>
+                <input type="number" name="weight3" required>
+            </div>
+            <div class="item">
+                <h4><label>아이템4 이익 / 무게:</label></h4>
+                <input type="number" name="profit4" required>
+                <input type="number" name="weight4" required>
+            </div>
+        </div>
+        
+        <button type="submit">결과보기</button>
+        
+    </form>
+    
+        <p>
+        {{ render_html | default('') | safe}}
+        </p>
+
+        <div class="home-link">
+            <a href="/">&#9664; 홈으로</a>
+        </div>
+</body>
+</html>
